@@ -161,6 +161,19 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
 <p style="color: #FF0000;">缺点:</p>有效期未知]]></content>
   </entry>
   <entry>
+    <title>Root</title>
+    <url>/2023/10/19/Root/</url>
+    <content><![CDATA[<h1 id="检测工具"><a href="#检测工具" class="headerlink" title="检测工具"></a>检测工具</h1><p>1.”momo”环境检测4.4.1版<br><a href="https://www.123pan.com/s/wkn6Vv-eipiH.html">123云盘下载_版本4.4.1</a><br><a href="https://wwp.lanzoup.com/iC9SP1dug0qh">蓝奏云下载_版本4.4.1</a>提取码：2r5d</p>
+]]></content>
+      <categories>
+        <category>搞机</category>
+        <category>Root</category>
+      </categories>
+      <tags>
+        <tag>搞机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux的常用的指令</title>
     <url>/2023/10/03/Linux-1/</url>
     <content><![CDATA[<p>这篇关于Linux常用的关于关于存储和管理密码 ，WiFi等的命令。</p>
@@ -188,19 +201,6 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Root</title>
-    <url>/2023/10/19/Root/</url>
-    <content><![CDATA[<h1 id="检测工具"><a href="#检测工具" class="headerlink" title="检测工具"></a>检测工具</h1><p>1.”momo”环境检测4.4.1版<br><a href="https://www.123pan.com/s/wkn6Vv-eipiH.html">123云盘下载_版本4.4.1</a><br><a href="https://wwp.lanzoup.com/iC9SP1dug0qh">蓝奏云下载_版本4.4.1</a>提取码：2r5d</p>
-]]></content>
-      <categories>
-        <category>搞机</category>
-        <category>Root</category>
-      </categories>
-      <tags>
-        <tag>搞机</tag>
       </tags>
   </entry>
   <entry>
@@ -244,6 +244,41 @@ height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
       <tags>
         <tag>应用</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>如何使用filebrowser</title>
+    <url>/2023/10/02/filebrowser/</url>
+    <content><![CDATA[<h2 id="Linux下的使用教程"><a href="#Linux下的使用教程" class="headerlink" title="Linux下的使用教程"></a>Linux下的使用教程</h2><p>filebrowser是一个独立的文件管理工具，它使用go语言，不需要依赖直接.&#x2F;filebrowser即可运行，为了方便使用该篇文章叫你如何开机启动它。</p>
+<h3 id="查看架构-1"><a href="#查看架构-1" class="headerlink" title="查看架构-1"></a>查看架构-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">arch</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="下载filebrowser-2"><a href="#下载filebrowser-2" class="headerlink" title="下载filebrowser-2"></a>下载filebrowser-2</h3><p>github官网地址</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/filebrowser/filebrowser</span><br></pre></td></tr></table></figure>
+<h3 id="下载-3"><a href="#下载-3" class="headerlink" title="下载-3"></a>下载-3</h3><p>在Releases中找到合适的安装包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="built_in">mkdir</span> filebrowser</span><br><span class="line"><span class="built_in">cd</span> filebrowser</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget 下载地址</span><br></pre></td></tr></table></figure>
+<h3 id="解压-4"><a href="#解压-4" class="headerlink" title="解压-4"></a>解压-4</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf 文件名</span><br></pre></td></tr></table></figure>
+<p>删除(可选)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf 文件名</span><br></pre></td></tr></table></figure>
+<h3 id="安装-5"><a href="#安装-5" class="headerlink" title="安装-5"></a>安装-5</h3><p>设置权限(chmod),端口号(port),账号密码(已设置为root)<br>这段无需更改</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 777 filebrowser</span><br><span class="line">./filebrowser -d filebrowser.db config init</span><br><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --address 0.0.0.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>设置端口号</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --port 10000</span><br></pre></td></tr></table></figure>
+<p>设置账号</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db <span class="built_in">users</span> add root root --perm.admin</span><br></pre></td></tr></table></figure>
+<p>设置挂载点</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --root /</span><br></pre></td></tr></table></figure>
+<h3 id="启动-6"><a href="#启动-6" class="headerlink" title="启动-6"></a>启动-6</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/filebrowser/filebrowser -d /filebrowser/filebrowser.db --disable-preview-resize --disable-type-detection-by-header --cache-dir /filebrowser/cache</span><br></pre></td></tr></table></figure>
+<h3 id="添加开机启动-7"><a href="#添加开机启动-7" class="headerlink" title="添加开机启动-7"></a>添加开机启动-7</h3><p>编辑rc.local</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/rc.local</span><br></pre></td></tr></table></figure>
+<p>添加这段命令(建议添加在中间，其他我没试过)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/filebrowser/filebrowser -d /filebrowser/filebrowser.db --disable-preview-resize --disable-type-detection-by-header --cache-dir /filebrowser/cache&amp;</span><br></pre></td></tr></table></figure>
+<p>重启</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<h3 id="实际测试-8"><a href="#实际测试-8" class="headerlink" title="实际测试-8"></a>实际测试-8</h3><p>访问网址: <a href="https://localhost:10000/">localhost:10000</a><br>账号和密码<br>$ root<br>$ root</p>
+]]></content>
+      <categories>
+        <category>文件管理</category>
+      </categories>
   </entry>
   <entry>
     <title>Hexo的基本使用</title>
@@ -589,40 +624,5 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       <tags>
         <tag>网站</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>如何使用filebrowser</title>
-    <url>/2023/10/02/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8filebrowser/</url>
-    <content><![CDATA[<h2 id="Linux下的使用教程"><a href="#Linux下的使用教程" class="headerlink" title="Linux下的使用教程"></a>Linux下的使用教程</h2><p>filebrowser是一个独立的文件管理工具，它使用go语言，不需要依赖直接.&#x2F;filebrowser即可运行，为了方便使用该篇文章叫你如何开机启动它。</p>
-<h3 id="查看架构-1"><a href="#查看架构-1" class="headerlink" title="查看架构-1"></a>查看架构-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">arch</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="下载filebrowser-2"><a href="#下载filebrowser-2" class="headerlink" title="下载filebrowser-2"></a>下载filebrowser-2</h3><p>github官网地址</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/filebrowser/filebrowser</span><br></pre></td></tr></table></figure>
-<h3 id="下载-3"><a href="#下载-3" class="headerlink" title="下载-3"></a>下载-3</h3><p>在Releases中找到合适的安装包</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br><span class="line"><span class="built_in">mkdir</span> filebrowser</span><br><span class="line"><span class="built_in">cd</span> filebrowser</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget 下载地址</span><br></pre></td></tr></table></figure>
-<h3 id="解压-4"><a href="#解压-4" class="headerlink" title="解压-4"></a>解压-4</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf 文件名</span><br></pre></td></tr></table></figure>
-<p>删除(可选)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf 文件名</span><br></pre></td></tr></table></figure>
-<h3 id="安装-5"><a href="#安装-5" class="headerlink" title="安装-5"></a>安装-5</h3><p>设置权限(chmod),端口号(port),账号密码(已设置为root)<br>这段无需更改</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 777 filebrowser</span><br><span class="line">./filebrowser -d filebrowser.db config init</span><br><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --address 0.0.0.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>设置端口号</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --port 10000</span><br></pre></td></tr></table></figure>
-<p>设置账号</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db <span class="built_in">users</span> add root root --perm.admin</span><br></pre></td></tr></table></figure>
-<p>设置挂载点</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./filebrowser -d filebrowser.db config <span class="built_in">set</span> --root /</span><br></pre></td></tr></table></figure>
-<h3 id="启动-6"><a href="#启动-6" class="headerlink" title="启动-6"></a>启动-6</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/filebrowser/filebrowser -d /filebrowser/filebrowser.db --disable-preview-resize --disable-type-detection-by-header --cache-dir /filebrowser/cache</span><br></pre></td></tr></table></figure>
-<h3 id="添加开机启动-7"><a href="#添加开机启动-7" class="headerlink" title="添加开机启动-7"></a>添加开机启动-7</h3><p>编辑rc.local</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/rc.local</span><br></pre></td></tr></table></figure>
-<p>添加这段命令(建议添加在中间，其他我没试过)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/filebrowser/filebrowser -d /filebrowser/filebrowser.db --disable-preview-resize --disable-type-detection-by-header --cache-dir /filebrowser/cache&amp;</span><br></pre></td></tr></table></figure>
-<p>重启</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
-<h3 id="实际测试-8"><a href="#实际测试-8" class="headerlink" title="实际测试-8"></a>实际测试-8</h3><p>访问网址: <a href="https://localhost:10000/">localhost:10000</a><br>账号和密码<br>$ root<br>$ root</p>
-]]></content>
-      <categories>
-        <category>文件管理</category>
-      </categories>
   </entry>
 </search>
