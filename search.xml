@@ -625,4 +625,36 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
         <tag>网站</tag>
       </tags>
   </entry>
+  <entry>
+    <title>git</title>
+    <url>/2023/12/03/git/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>minecraft服务器</title>
+    <url>/2023/12/03/minecraft-server/</url>
+    <content><![CDATA[<h1 id="基岩版服务器搭建"><a href="#基岩版服务器搭建" class="headerlink" title="基岩版服务器搭建"></a>基岩版服务器搭建</h1><h2 id="下载服务器文件"><a href="#下载服务器文件" class="headerlink" title="下载服务器文件"></a>下载服务器文件</h2><p><a href="https://www.minecraft.net/zh-hans/download/server/bedrock">服务器包下载链接</a></p>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>1.找一个文件夹把下载的压缩包解压<br>(解压路径不能有中文)<br>    kr-se-cncn-1.openfrp.top:19100<br><a href="http://www.openfrp.net/">www.openfrp.net</a></p>
+]]></content>
+      <categories>
+        <category>游戏</category>
+        <category>minecraft</category>
+        <category>服务器</category>
+      </categories>
+      <tags>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>minecraft</title>
+    <url>/2023/12/03/minecraft/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>游戏</category>
+        <category>minecraft</category>
+      </categories>
+      <tags>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
 </search>
