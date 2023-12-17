@@ -276,6 +276,22 @@ height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
       </categories>
   </entry>
   <entry>
+    <title>修手机</title>
+    <url>/2023/12/17/fix-phone/</url>
+    <content><![CDATA[<h1 id="小米"><a href="#小米" class="headerlink" title="小米"></a>小米</h1><li style="margin-left: 40px;font-size: 15px">一键锁屏</li>
+
+<p>在添加小部件里可能找不到<b>一键锁屏</b>，你只需要<code>断开网络</code>然后在添加小部件最下方就会多出一个选项，在那里应该就能找到<b>一键锁屏</b>了。</p>
+<p style="color: #FF0000;">注:</p>
+仅在MIUI12.5测试过]]></content>
+      <categories>
+        <category>修理</category>
+        <category>手机</category>
+      </categories>
+      <tags>
+        <tag>修理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git</title>
     <url>/2023/12/03/git/</url>
     <content><![CDATA[]]></content>
@@ -555,6 +571,18 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
+    <title>minecraft</title>
+    <url>/2023/12/03/minecraft/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>游戏</category>
+        <category>minecraft</category>
+      </categories>
+      <tags>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>minecraft服务器</title>
     <url>/2023/12/03/minecraft-server/</url>
     <content><![CDATA[<h1 id="基岩版服务器搭建"><a href="#基岩版服务器搭建" class="headerlink" title="基岩版服务器搭建"></a>基岩版服务器搭建</h1><h2 id="下载服务器文件"><a href="#下载服务器文件" class="headerlink" title="下载服务器文件"></a>下载服务器文件</h2><p><a href="https://www.minecraft.net/zh-hans/download/server/bedrock">服务器包下载链接</a></p>
@@ -575,21 +603,22 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
-    <title>minecraft</title>
-    <url>/2023/12/03/minecraft/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>游戏</category>
-        <category>minecraft</category>
-      </categories>
-      <tags>
-        <tag>游戏</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>password</title>
     <url>/2023/12/17/password/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p style="color: #FF0000;">无效：</p>
+75908，09066，09060，09069，77995，15902，77599，08526，09063，08652，07598，06980，05280，]]></content>
+  </entry>
+  <entry>
+    <title>电脑软件</title>
+    <url>/2023/12/14/pc-software/</url>
+    <content><![CDATA[<h1 id="实用"><a href="#实用" class="headerlink" title="实用"></a>实用</h1>]]></content>
+      <categories>
+        <category>应用</category>
+        <category>电脑应用</category>
+      </categories>
+      <tags>
+        <tag>应用</tag>
+      </tags>
   </entry>
   <entry>
     <title>termux</title>
@@ -628,18 +657,6 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </categories>
       <tags>
         <tag>termux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>电脑软件</title>
-    <url>/2023/12/14/pc-software/</url>
-    <content><![CDATA[<h1 id="实用"><a href="#实用" class="headerlink" title="实用"></a>实用</h1>]]></content>
-      <categories>
-        <category>应用</category>
-        <category>电脑应用</category>
-      </categories>
-      <tags>
-        <tag>应用</tag>
       </tags>
   </entry>
   <entry>
