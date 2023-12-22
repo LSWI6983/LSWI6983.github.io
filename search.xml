@@ -132,7 +132,7 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
 <li style="margin-left: 40px;font-size: 15px">选择下载存储位置</li>
 
 <p><img src="/2023/11/26/English/idm_3.jpg" alt="idm_3"></p>
-<p><ins>一直点空白处</ins></p>
+<p><code>一直点空白处</code></p>
 <p style="color: #FF0000;">不创建idm浏览器</p>
 
 
@@ -141,7 +141,7 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
 <p><img src="/2023/11/26/English/idm_4.jpg" alt="idm_4"></p>
 <li style="margin-left: 40px;font-size: 15px">在搜索框中输入链接</li>
 
-<p><ins>记得按回车进入网站</ins></p>
+<p><code>记得按回车进入网站</code></p>
 <p><img src="/2023/11/26/English/idm_5.jpg" alt="idm_5"></p>
 <li style="margin-left: 40px;font-size: 15px">点击下载图标</li>
 
@@ -149,14 +149,14 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
 <li style="margin-left: 40px;font-size: 15px">获取视频直链</li>
 
 <p><img src="/2023/11/26/English/idm_7.jpg" alt="idm_7"></p>
-<p><ins>然后选择预览(也可以直接下载)</ins></p>
+<p><code>然后选择预览(也可以直接下载)</code></p>
 <p><img src="/2023/11/26/English/idm_8.jpg" alt="idm_8"></p>
-<p><ins>点击预览后进行这一步</ins></p>
+<p><code>点击预览后进行这一步</code></p>
 <p><img src="/2023/11/26/English/idm_9.jpg" alt="idm_9"></p>
-<p><ins>复制链接</ins></p>
+<p><code>复制链接</code></p>
 <p><img src="/2023/11/26/English/idm_10.jpg" alt="idm_10"></p>
-<p><ins>最后把这个链接分享给其他人就行了</ins></p>
-<p><ins>其他人都可以通过这个链接直接播放视频</ins></p>
+<p><code>最后把这个链接分享给其他人就行了</code></p>
+<p><code>其他人都可以通过这个链接直接播放视频</code></p>
 <p style="color: #00FF00;">优点:</p>播放便捷
 
 <p style="color: #FF0000;">缺点:</p>有效期未知]]></content>
@@ -511,29 +511,6 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
-    <title>Termux上搭建hexo</title>
-    <url>/2023/11/25/hexo-termux/</url>
-    <content><![CDATA[<p>sed -i ‘s@^(deb.*stable main)$@#\1\ndeb <a href="https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24">https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24</a> stable main@’ $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list</p>
-<p>pkg update</p>
-<p>pkg install nodejs-lts<br>pkg install git<br>pkg install vim</p>
-<p>mkdir hexo<br>chmod 777 hexo<br>cd hexo</p>
-<p>npm install hexo-cli -g<br>hexo init</p>
-<p>hexo g<br>hexo s </p>
-<p>主题<br>git clone -b master <a href="https://github.com/jerryc127/hexo-theme-butterfly.git">https://github.com/jerryc127/hexo-theme-butterfly.git</a> themes&#x2F;butterfly</p>
-<p>vim themes&#x2F;butterfly&#x2F;_config.yml</p>
-<p>vim编辑器:<br>输入i才能编辑<br>按下esc 再输入:wq保存退出npm install hexo-renderer-pug hexo-renderer-stylus –save</p>
-]]></content>
-      <categories>
-        <category>H</category>
-        <category>hexo</category>
-        <category>termux</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>termux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo的安装</title>
     <url>/2023/11/24/hexo/</url>
     <content><![CDATA[<p>hexo g 创建静态文件<br>hexo s 启动<br>hexo clean 清除缓存<br>hexo d 推送文件<br>hexo new “My New Post” 创建新文章</p>
@@ -575,6 +552,29 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Termux上搭建hexo</title>
+    <url>/2023/11/25/hexo-termux/</url>
+    <content><![CDATA[<p>sed -i ‘s@^(deb.*stable main)$@#\1\ndeb <a href="https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24">https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24</a> stable main@’ $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list</p>
+<p>pkg update</p>
+<p>pkg install nodejs-lts<br>pkg install git<br>pkg install vim</p>
+<p>mkdir hexo<br>chmod 777 hexo<br>cd hexo</p>
+<p>npm install hexo-cli -g<br>hexo init</p>
+<p>hexo g<br>hexo s </p>
+<p>主题<br>git clone -b master <a href="https://github.com/jerryc127/hexo-theme-butterfly.git">https://github.com/jerryc127/hexo-theme-butterfly.git</a> themes&#x2F;butterfly</p>
+<p>vim themes&#x2F;butterfly&#x2F;_config.yml</p>
+<p>vim编辑器:<br>输入i才能编辑<br>按下esc 再输入:wq保存退出npm install hexo-renderer-pug hexo-renderer-stylus –save</p>
+]]></content>
+      <categories>
+        <category>H</category>
+        <category>hexo</category>
+        <category>termux</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>termux</tag>
       </tags>
   </entry>
   <entry>
@@ -651,6 +651,12 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
+    <title>password</title>
+    <url>/2023/12/17/password/</url>
+    <content><![CDATA[<p style="color: #FF0000;">无效：</p>
+75908，09066，09060，09069，77995，15902，77599，08526，09063，08652，07598，06980，05280，]]></content>
+  </entry>
+  <entry>
     <title>电脑软件</title>
     <url>/2023/12/14/pc-software/</url>
     <content><![CDATA[<h1 id="实用"><a href="#实用" class="headerlink" title="实用"></a>实用</h1>]]></content>
@@ -662,12 +668,6 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       <tags>
         <tag>应用</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>password</title>
-    <url>/2023/12/17/password/</url>
-    <content><![CDATA[<p style="color: #FF0000;">无效：</p>
-75908，09066，09060，09069，77995，15902，77599，08526，09063，08652，07598，06980，05280，]]></content>
   </entry>
   <entry>
     <title>termux</title>
@@ -710,6 +710,22 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
+    <title>视频制作</title>
+    <url>/2023/11/05/video/</url>
+    <content><![CDATA[<h1 id="视频录制工具"><a href="#视频录制工具" class="headerlink" title="视频录制工具"></a>视频录制工具</h1><h2 id="AZ-Screen-Recorder"><a href="#AZ-Screen-Recorder" class="headerlink" title="AZ Screen Recorder"></a>AZ Screen Recorder</h2><p>1.介绍<br>支持画笔<br>支持最高1080p 12Mpbs 120FPS<br>应用图片(放不下就看看吧)<br><img src="/2023/11/05/video/1.jpg" alt="图一"><br><img src="/2023/11/05/video/2.jpg" alt="图二"><br>2.下载链接<br><a href="https://www.123pan.com/s/wkn6Vv-3VpiH.html">123云盘下载_版本5.10.6</a>提取码：eqMd<br><a href="https://wwp.lanzoup.com/iM4H51dug88h">蓝奏云下载_版本5.10.6</a>提取码：8c5h</p>
+<h1 id="视频剪辑工具"><a href="#视频剪辑工具" class="headerlink" title="视频剪辑工具"></a>视频剪辑工具</h1><h2 id="VN"><a href="#VN" class="headerlink" title="VN"></a>VN</h2><p>免登录可用<br>应用商店下载就行</p>
+<h1 id="视频播放器"><a href="#视频播放器" class="headerlink" title="视频播放器"></a>视频播放器</h1><h2 id="XPlayer-已破解"><a href="#XPlayer-已破解" class="headerlink" title="XPlayer(已破解)"></a>XPlayer(已破解)</h2><p>视频,音乐都能播放，功能强大<br><a href="https://www.123pan.com/s/wkn6Vv-hVpiH.html">123云盘下载_版本2.2.1.2</a>提取码：XWsx<br><a href="https://wwp.lanzoup.com/iW26T1dug49e">蓝奏云下载_版本2.2.1.2</a>提取码：apj4</p>
+]]></content>
+      <categories>
+        <category>X</category>
+        <category>学习</category>
+        <category>视频</category>
+      </categories>
+      <tags>
+        <tag>做视频</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>web</title>
     <url>/2023/10/19/web/</url>
     <content><![CDATA[<h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><p>只能搭建静态网站</p>
@@ -727,22 +743,6 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </categories>
       <tags>
         <tag>网站</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>视频制作</title>
-    <url>/2023/11/05/video/</url>
-    <content><![CDATA[<h1 id="视频录制工具"><a href="#视频录制工具" class="headerlink" title="视频录制工具"></a>视频录制工具</h1><h2 id="AZ-Screen-Recorder"><a href="#AZ-Screen-Recorder" class="headerlink" title="AZ Screen Recorder"></a>AZ Screen Recorder</h2><p>1.介绍<br>支持画笔<br>支持最高1080p 12Mpbs 120FPS<br>应用图片(放不下就看看吧)<br><img src="/2023/11/05/video/1.jpg" alt="图一"><br><img src="/2023/11/05/video/2.jpg" alt="图二"><br>2.下载链接<br><a href="https://www.123pan.com/s/wkn6Vv-3VpiH.html">123云盘下载_版本5.10.6</a>提取码：eqMd<br><a href="https://wwp.lanzoup.com/iM4H51dug88h">蓝奏云下载_版本5.10.6</a>提取码：8c5h</p>
-<h1 id="视频剪辑工具"><a href="#视频剪辑工具" class="headerlink" title="视频剪辑工具"></a>视频剪辑工具</h1><h2 id="VN"><a href="#VN" class="headerlink" title="VN"></a>VN</h2><p>免登录可用<br>应用商店下载就行</p>
-<h1 id="视频播放器"><a href="#视频播放器" class="headerlink" title="视频播放器"></a>视频播放器</h1><h2 id="XPlayer-已破解"><a href="#XPlayer-已破解" class="headerlink" title="XPlayer(已破解)"></a>XPlayer(已破解)</h2><p>视频,音乐都能播放，功能强大<br><a href="https://www.123pan.com/s/wkn6Vv-hVpiH.html">123云盘下载_版本2.2.1.2</a>提取码：XWsx<br><a href="https://wwp.lanzoup.com/iW26T1dug49e">蓝奏云下载_版本2.2.1.2</a>提取码：apj4</p>
-]]></content>
-      <categories>
-        <category>X</category>
-        <category>学习</category>
-        <category>视频</category>
-      </categories>
-      <tags>
-        <tag>做视频</tag>
       </tags>
   </entry>
 </search>
