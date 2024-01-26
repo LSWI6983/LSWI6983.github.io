@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker</title>
+    <url>/2023/11/23/Docker/</url>
+    <content><![CDATA[<h1 id="Docker使用"><a href="#Docker使用" class="headerlink" title="Docker使用"></a>Docker使用</h1><h2 id="Portainer-可视化容器管理工具"><a href="#Portainer-可视化容器管理工具" class="headerlink" title="Portainer(可视化容器管理工具)"></a>Portainer(可视化容器管理工具)</h2><p>安装好Docker后输入这个<br>1).</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker volume create portainer_data</span><br></pre></td></tr></table></figure>
+<p>2).启动(端口9000，前一个是访问的端口9000)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest</span><br></pre></td></tr></table></figure>
+<h3 id="本地浏览器访问Portainer"><a href="#本地浏览器访问Portainer" class="headerlink" title="本地浏览器访问Portainer"></a>本地浏览器访问Portainer</h3><p>http:&#x2F;&#x2F;服务器ip地址:9000</p>
+<p>首次访问需要设置admin密码</p>
+<h2 id="novnc-网页图形界面"><a href="#novnc-网页图形界面" class="headerlink" title="novnc(网页图形界面)"></a>novnc(网页图形界面)</h2><p>HTTP_PASSWORD&#x3D;12345678  默认密码是12345678，这里可以自定义，1440，x720是分辨率，这里同样可以改成自己想要的分辨率，访问端口是6080</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 6080:80 -v <span class="variable">$PWD</span>:/workspace:rw -e HTTP_PASSWORD=12345678 -e RESOLUTION=1440x720 --name ubuntu-novnc1 fredblgr/ubuntu-novnc:20.04</span><br></pre></td></tr></table></figure>
+<p>安装好后我们可以用http:&#x2F;&#x2F;服务器ip地址:6080<br>默认用户名：root</p>
+<p>默认密码：12345678（别忘了改成自己的）</p>
+<h1 id="Linux篇"><a href="#Linux篇" class="headerlink" title="Linux篇"></a>Linux篇</h1><h2 id="系统更新"><a href="#系统更新" class="headerlink" title="系统更新"></a>系统更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update -y &amp;&amp; sudo apt-get upgrade -y</span><br></pre></td></tr></table></figure>
+<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install docker.io -y &amp;&amp; sudo apt install docker-compose</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>D</category>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常用指令</title>
     <url>/2023/10/09/Common-instruction/</url>
     <content><![CDATA[<h2 id="文件管理指令"><a href="#文件管理指令" class="headerlink" title="文件管理指令"></a>文件管理指令</h2><p>1.nano(系统自带的短小美)</p>
@@ -61,76 +85,6 @@
       </categories>
       <tags>
         <tag>指令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker</title>
-    <url>/2023/11/23/Docker/</url>
-    <content><![CDATA[<h1 id="Docker使用"><a href="#Docker使用" class="headerlink" title="Docker使用"></a>Docker使用</h1><h2 id="Portainer-可视化容器管理工具"><a href="#Portainer-可视化容器管理工具" class="headerlink" title="Portainer(可视化容器管理工具)"></a>Portainer(可视化容器管理工具)</h2><p>安装好Docker后输入这个<br>1).</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker volume create portainer_data</span><br></pre></td></tr></table></figure>
-<p>2).启动(端口9000，前一个是访问的端口9000)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest</span><br></pre></td></tr></table></figure>
-<h3 id="本地浏览器访问Portainer"><a href="#本地浏览器访问Portainer" class="headerlink" title="本地浏览器访问Portainer"></a>本地浏览器访问Portainer</h3><p>http:&#x2F;&#x2F;服务器ip地址:9000</p>
-<p>首次访问需要设置admin密码</p>
-<h2 id="novnc-网页图形界面"><a href="#novnc-网页图形界面" class="headerlink" title="novnc(网页图形界面)"></a>novnc(网页图形界面)</h2><p>HTTP_PASSWORD&#x3D;12345678  默认密码是12345678，这里可以自定义，1440，x720是分辨率，这里同样可以改成自己想要的分辨率，访问端口是6080</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -p 6080:80 -v <span class="variable">$PWD</span>:/workspace:rw -e HTTP_PASSWORD=12345678 -e RESOLUTION=1440x720 --name ubuntu-novnc1 fredblgr/ubuntu-novnc:20.04</span><br></pre></td></tr></table></figure>
-<p>安装好后我们可以用http:&#x2F;&#x2F;服务器ip地址:6080<br>默认用户名：root</p>
-<p>默认密码：12345678（别忘了改成自己的）</p>
-<h1 id="Linux篇"><a href="#Linux篇" class="headerlink" title="Linux篇"></a>Linux篇</h1><h2 id="系统更新"><a href="#系统更新" class="headerlink" title="系统更新"></a>系统更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update -y &amp;&amp; sudo apt-get upgrade -y</span><br></pre></td></tr></table></figure>
-<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install docker.io -y &amp;&amp; sudo apt install docker-compose</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>D</category>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux的常用的指令</title>
-    <url>/2023/10/03/Linux-1/</url>
-    <content><![CDATA[<p>这篇关于Linux常用的关于关于存储和管理密码 ，WiFi等的命令。</p>
-<h2 id="一-内存"><a href="#一-内存" class="headerlink" title="一.内存"></a>一.内存</h2><h3 id="查看剩余内存-1"><a href="#查看剩余内存-1" class="headerlink" title="查看剩余内存-1"></a>查看剩余内存-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
-<h3 id="查看剩余寿命-固态-2"><a href="#查看剩余寿命-固态-2" class="headerlink" title="查看剩余寿命(固态)-2"></a>查看剩余寿命(固态)-2</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /sys/class/mmc_host/mmc0/mmc0:0001/life_time</span><br></pre></td></tr></table></figure>
-<p>0X04 用了40%的寿命<br>0X08 用了80%的寿命<br>0X00 看不到寿命<br>·如图<br><img src="/2023/10/03/Linux-1/EMMC.png" alt="EMMC寿命对照表"><br>所以你已经懂它的格式了吧<br>不懂我就给你看两张照片对比一下<br>看不到寿命或满血的情况<br><img src="/2023/10/03/Linux-1/1.jpg" alt="看不到寿命的情况"><br>能看到寿命的情况<br><img src="/2023/10/03/Linux-1/2.jpg" alt="能看到寿命的情况"></p>
-<h2 id="二-网络"><a href="#二-网络" class="headerlink" title="二.网络"></a>二.网络</h2><h3 id="设置网络-WiFi或USB网络设置-1"><a href="#设置网络-WiFi或USB网络设置-1" class="headerlink" title="设置网络(WiFi或USB网络设置)-1"></a>设置网络(WiFi或USB网络设置)-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmtui</span><br></pre></td></tr></table></figure>
-<p>设置后最好再reboot重启一下</p>
-<h3 id="查看ip-2"><a href="#查看ip-2" class="headerlink" title="查看ip-2"></a>查看ip-2</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看端口占用-3"><a href="#查看端口占用-3" class="headerlink" title="查看端口占用-3"></a>查看端口占用-3</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat/ss -antulp | grep :端口号</span><br></pre></td></tr></table></figure>
-<p>详细的查看PID</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -aux | grep 进程PID</span><br></pre></td></tr></table></figure>
-<p>查看该PID所处目录(末尾加&#x2F;会显示进程路径的内容，不加显示进程具体路径)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ll /proc/进程PID/cwd</span><br></pre></td></tr></table></figure>
-<h2 id="三-用户"><a href="#三-用户" class="headerlink" title="三.用户"></a>三.用户</h2><h3 id="改密码-1"><a href="#改密码-1" class="headerlink" title="改密码-1"></a>改密码-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
-<h2 id="四-杀死进程-kill-pkill-killall"><a href="#四-杀死进程-kill-pkill-killall" class="headerlink" title="四.杀死进程(kill,pkill,killall)"></a>四.杀死进程(kill,pkill,killall)</h2><h3 id="kill-1"><a href="#kill-1" class="headerlink" title="kill -1"></a>kill -1</h3><p>kill PID<br>强制下线<br>kill -9 PID<br>批量精准操作(-9为强制操作，非必须)<br>kill -9 PID</p>
-<h3 id="pkill-2"><a href="#pkill-2" class="headerlink" title="pkill -2"></a>pkill -2</h3><p>pkill 进程名<br>也可以加上-9<br>通过pkill -h获取帮助</p>
-<h3 id="killall-3"><a href="#killall-3" class="headerlink" title="killall -3"></a>killall -3</h3><p>killall和pkill差不多(好像-9前面不需要空格)<br>killall -h获得帮助</p>
-]]></content>
-      <categories>
-        <category>Z</category>
-        <category>指令</category>
-        <category>Linux指令</category>
-        <category>L</category>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Root</title>
-    <url>/2023/10/19/Root/</url>
-    <content><![CDATA[<h1 id="检测工具"><a href="#检测工具" class="headerlink" title="检测工具"></a>检测工具</h1><p>1.”momo”环境检测4.4.1版<br><a href="https://www.123pan.com/s/wkn6Vv-eipiH.html">123云盘下载_版本4.4.1</a><br><a href="https://wwp.lanzoup.com/iC9SP1dug0qh">蓝奏云下载_版本4.4.1</a>提取码：2r5d</p>
-]]></content>
-      <categories>
-        <category>G</category>
-        <category>搞机</category>
-        <category>Root</category>
-      </categories>
-      <tags>
-        <tag>搞机</tag>
       </tags>
   </entry>
   <entry>
@@ -216,6 +170,52 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
+    <title>Linux的常用的指令</title>
+    <url>/2023/10/03/Linux-1/</url>
+    <content><![CDATA[<p>这篇关于Linux常用的关于关于存储和管理密码 ，WiFi等的命令。</p>
+<h2 id="一-内存"><a href="#一-内存" class="headerlink" title="一.内存"></a>一.内存</h2><h3 id="查看剩余内存-1"><a href="#查看剩余内存-1" class="headerlink" title="查看剩余内存-1"></a>查看剩余内存-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
+<h3 id="查看剩余寿命-固态-2"><a href="#查看剩余寿命-固态-2" class="headerlink" title="查看剩余寿命(固态)-2"></a>查看剩余寿命(固态)-2</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /sys/class/mmc_host/mmc0/mmc0:0001/life_time</span><br></pre></td></tr></table></figure>
+<p>0X04 用了40%的寿命<br>0X08 用了80%的寿命<br>0X00 看不到寿命<br>·如图<br><img src="/2023/10/03/Linux-1/EMMC.png" alt="EMMC寿命对照表"><br>所以你已经懂它的格式了吧<br>不懂我就给你看两张照片对比一下<br>看不到寿命或满血的情况<br><img src="/2023/10/03/Linux-1/1.jpg" alt="看不到寿命的情况"><br>能看到寿命的情况<br><img src="/2023/10/03/Linux-1/2.jpg" alt="能看到寿命的情况"></p>
+<h2 id="二-网络"><a href="#二-网络" class="headerlink" title="二.网络"></a>二.网络</h2><h3 id="设置网络-WiFi或USB网络设置-1"><a href="#设置网络-WiFi或USB网络设置-1" class="headerlink" title="设置网络(WiFi或USB网络设置)-1"></a>设置网络(WiFi或USB网络设置)-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmtui</span><br></pre></td></tr></table></figure>
+<p>设置后最好再reboot重启一下</p>
+<h3 id="查看ip-2"><a href="#查看ip-2" class="headerlink" title="查看ip-2"></a>查看ip-2</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看端口占用-3"><a href="#查看端口占用-3" class="headerlink" title="查看端口占用-3"></a>查看端口占用-3</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat/ss -antulp | grep :端口号</span><br></pre></td></tr></table></figure>
+<p>详细的查看PID</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -aux | grep 进程PID</span><br></pre></td></tr></table></figure>
+<p>查看该PID所处目录(末尾加&#x2F;会显示进程路径的内容，不加显示进程具体路径)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ll /proc/进程PID/cwd</span><br></pre></td></tr></table></figure>
+<h2 id="三-用户"><a href="#三-用户" class="headerlink" title="三.用户"></a>三.用户</h2><h3 id="改密码-1"><a href="#改密码-1" class="headerlink" title="改密码-1"></a>改密码-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<h2 id="四-杀死进程-kill-pkill-killall"><a href="#四-杀死进程-kill-pkill-killall" class="headerlink" title="四.杀死进程(kill,pkill,killall)"></a>四.杀死进程(kill,pkill,killall)</h2><h3 id="kill-1"><a href="#kill-1" class="headerlink" title="kill -1"></a>kill -1</h3><p>kill PID<br>强制下线<br>kill -9 PID<br>批量精准操作(-9为强制操作，非必须)<br>kill -9 PID</p>
+<h3 id="pkill-2"><a href="#pkill-2" class="headerlink" title="pkill -2"></a>pkill -2</h3><p>pkill 进程名<br>也可以加上-9<br>通过pkill -h获取帮助</p>
+<h3 id="killall-3"><a href="#killall-3" class="headerlink" title="killall -3"></a>killall -3</h3><p>killall和pkill差不多(好像-9前面不需要空格)<br>killall -h获得帮助</p>
+]]></content>
+      <categories>
+        <category>Z</category>
+        <category>指令</category>
+        <category>L</category>
+        <category>Linux指令</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Root</title>
+    <url>/2023/10/19/Root/</url>
+    <content><![CDATA[<h1 id="检测工具"><a href="#检测工具" class="headerlink" title="检测工具"></a>检测工具</h1><p>1.”momo”环境检测4.4.1版<br><a href="https://www.123pan.com/s/wkn6Vv-eipiH.html">123云盘下载_版本4.4.1</a><br><a href="https://wwp.lanzoup.com/iC9SP1dug0qh">蓝奏云下载_版本4.4.1</a>提取码：2r5d</p>
+]]></content>
+      <categories>
+        <category>G</category>
+        <category>搞机</category>
+        <category>Root</category>
+      </categories>
+      <tags>
+        <tag>搞机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>adb</title>
     <url>/2023/10/19/adb/</url>
     <content><![CDATA[<h3 id="设置屏幕息屏时间-1"><a href="#设置屏幕息屏时间-1" class="headerlink" title="设置屏幕息屏时间-1"></a>设置屏幕息屏时间-1</h3><p>永不息屏</p>
@@ -251,20 +251,6 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
-    <title>生态瓶</title>
-    <url>/2023/12/22/ecosystem/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>X</category>
-        <category>学习</category>
-        <category>生物</category>
-        <category>生态系统</category>
-      </categories>
-      <tags>
-        <tag>学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>实用软件</title>
     <url>/2023/11/05/app/</url>
     <content><![CDATA[<h1 id="实用"><a href="#实用" class="headerlink" title="实用"></a>实用</h1><h2 id="Rotation-屏幕强制旋转"><a href="#Rotation-屏幕强制旋转" class="headerlink" title="Rotation(屏幕强制旋转)"></a>Rotation(屏幕强制旋转)</h2><p><a href="https://www.123pan.com/s/wkn6Vv-QVpiH.html">123云盘下载_版本25.0.2</a>提取码：WfSp</p>
@@ -290,6 +276,20 @@ height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
       </categories>
       <tags>
         <tag>应用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>生态瓶</title>
+    <url>/2023/12/22/ecosystem/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>X</category>
+        <category>学习</category>
+        <category>生物</category>
+        <category>生态系统</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
       </tags>
   </entry>
   <entry>
@@ -654,6 +654,19 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
+    <title>minecraft</title>
+    <url>/2023/12/03/minecraft/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Y</category>
+        <category>游戏</category>
+        <category>minecraft</category>
+      </categories>
+      <tags>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>minecraft服务器</title>
     <url>/2023/12/03/minecraft-server/</url>
     <content><![CDATA[<h1 id="基岩版服务器搭建"><a href="#基岩版服务器搭建" class="headerlink" title="基岩版服务器搭建"></a>基岩版服务器搭建</h1><h2 id="下载服务器文件"><a href="#下载服务器文件" class="headerlink" title="下载服务器文件"></a>下载服务器文件</h2><p><a href="https://www.minecraft.net/zh-hans/download/server/bedrock">服务器包下载链接</a></p>
@@ -675,16 +688,66 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
-    <title>minecraft</title>
-    <url>/2023/12/03/minecraft/</url>
-    <content><![CDATA[]]></content>
+    <title>OpenVPN</title>
+    <url>/2024/01/25/openvpn/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangshenghang/article/details/135292267">https://blog.csdn.net/zhangshenghang/article/details/135292267</a>)</p>
+<h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull kylemanna/openvpn:2.4</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h3><p>ip换成服务器的ip(网址)再加端口(如:udp:&#x2F;&#x2F;x.x.x.x:port)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /opt/openvpn:/etc/openvpn --<span class="built_in">rm</span> kylemanna/openvpn:2.4 ovpn_genconfig -u tcp://ip[:port]</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成密钥文件"><a href="#生成密钥文件" class="headerlink" title="生成密钥文件"></a>生成密钥文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /opt/openvpn:/etc/openvpn --<span class="built_in">rm</span> -it kylemanna/openvpn:2.4 ovpn_initpki</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 设置密码</span><br><span class="line">Enter New CA Key Passphrase: </span><br><span class="line">Re-Enter New CA Key Passphrase: </span><br><span class="line"># 默认回车</span><br><span class="line">Common Name (eg: your user, host, or server name) [Easy-RSA CA]:</span><br><span class="line"># 输入刚刚设置的密码</span><br><span class="line">Enter pass phrase for /etc/openvpn/pki/private/ca.key:</span><br><span class="line">Enter pass phrase for /etc/openvpn/pki/private/ca.key:</span><br></pre></td></tr></table></figure>
+
+<p>完整执行步骤日志</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@bigdata-101 ~]# docker run -v /opt/openvpn:/etc/openvpn --rm -it kylemanna/openvpn:2.4 ovpn_initpki</span><br><span class="line"></span><br><span class="line">init-pki complete; you may now create a CA or requests.</span><br><span class="line">Your newly created PKI dir is: /etc/openvpn/pki</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Using SSL: openssl OpenSSL 1.1.1g  21 Apr 2020</span><br><span class="line"></span><br><span class="line">Enter New CA Key Passphrase: </span><br><span class="line">Re-Enter New CA Key Passphrase: </span><br><span class="line">Generating RSA private key, 2048 bit long modulus (2 primes)</span><br><span class="line">.............................................................................................................................................................................+++++</span><br><span class="line">.................................+++++</span><br><span class="line">e is 65537 (0x010001)</span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line">into your certificate request.</span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line">For some fields there will be a default value,</span><br><span class="line">If you enter &#x27;.&#x27;, the field will be left blank.</span><br><span class="line">-----</span><br><span class="line">Common Name (eg: your user, host, or server name) [Easy-RSA CA]:</span><br><span class="line"></span><br><span class="line">CA creation complete and you may now import and sign cert requests.</span><br><span class="line">Your new CA certificate file for publishing is at:</span><br><span class="line">/etc/openvpn/pki/ca.crt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Using SSL: openssl OpenSSL 1.1.1g  21 Apr 2020</span><br><span class="line">Generating DH parameters, 2048 bit long safe prime, generator 2</span><br><span class="line">This is going to take a long time</span><br><span class="line">.................................................................+....+....................+.........................................................................................................+....+.......................................................................................................................................................................+.....................................+...................+.......................+.....................................................................................................................................................................................................................................+............................................................................+...................................................................................................................+.....+.......................................................................................................................................................................................................................................+..................................................................................................................................................................................................+........+.............................................................................................................................+..............................+....................................................+..............................................................................................................................................................................+......................................................................................................+....................................................................................+.......................++*++*++*++*</span><br><span class="line"></span><br><span class="line">DH parameters of size 2048 created at /etc/openvpn/pki/dh.pem</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Using SSL: openssl OpenSSL 1.1.1g  21 Apr 2020</span><br><span class="line">Generating a RSA private key</span><br><span class="line">.............................................+++++</span><br><span class="line">.....................+++++</span><br><span class="line">writing new private key to &#x27;/etc/openvpn/pki/easy-rsa-73.bBJIMn/tmp.PBbHDh&#x27;</span><br><span class="line">-----</span><br><span class="line">Using configuration from /etc/openvpn/pki/easy-rsa-73.bBJIMn/tmp.lDdIgp</span><br><span class="line">Enter pass phrase for /etc/openvpn/pki/private/ca.key:</span><br><span class="line">Check that the request matches the signature</span><br><span class="line">Signature ok</span><br><span class="line">The Subject&#x27;s Distinguished Name is as follows</span><br><span class="line">commonName            :ASN.1 12:&#x27;公网IP&#x27;</span><br><span class="line">Certificate is to be certified until Apr  2 07:03:45 2026 GMT (825 days)</span><br><span class="line"></span><br><span class="line">Write out database with 1 new entries</span><br><span class="line">Data Base Updated</span><br><span class="line"></span><br><span class="line">Using SSL: openssl OpenSSL 1.1.1g  21 Apr 2020</span><br><span class="line">Using configuration from /etc/openvpn/pki/easy-rsa-148.JkjcgL/tmp.Ahiido</span><br><span class="line">Enter pass phrase for /etc/openvpn/pki/private/ca.key:</span><br><span class="line"></span><br><span class="line">An updated CRL has been created.</span><br><span class="line">CRL file: /etc/openvpn/pki/crl.pem</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成客户端证书"><a href="#生成客户端证书" class="headerlink" title="生成客户端证书"></a>生成客户端证书</h3><p>生成无密码的客户端</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /opt/openvpn:/etc/openvpn --<span class="built_in">rm</span> -it kylemanna/openvpn:2.4 easyrsa build-client-full jast nopass</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>jast 为客户端用户</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@bigdata-101 ~]# docker run -v /opt/openvpn:/etc/openvpn --rm -it kylemanna/openvpn:2.4 easyrsa build-client-full jast nopass</span><br><span class="line">Using SSL: openssl OpenSSL 1.1.1g  21 Apr 2020</span><br><span class="line">Generating a RSA private key</span><br><span class="line">.+++++</span><br><span class="line">...................+++++</span><br><span class="line">writing new private key to &#x27;/etc/openvpn/pki/easy-rsa-1.npkoBm/tmp.GjbIiO&#x27;</span><br><span class="line">-----</span><br><span class="line">Using configuration from /etc/openvpn/pki/easy-rsa-1.npkoBm/tmp.GAAMkb</span><br><span class="line"></span><br><span class="line">Enter pass phrase for /etc/openvpn/pki/private/ca.key: # 输入刚刚创建的密码</span><br><span class="line">Check that the request matches the signature</span><br><span class="line">Signature ok</span><br><span class="line">The Subject&#x27;s Distinguished Name is as follows</span><br><span class="line">commonName            :ASN.1 12:&#x27;jast&#x27;</span><br><span class="line">Certificate is to be certified until Apr  2 07:06:25 2026 GMT (825 days)</span><br><span class="line"></span><br><span class="line">Write out database with 1 new entries</span><br><span class="line">Data Base Updated</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成有密码的客户端"><a href="#生成有密码的客户端" class="headerlink" title="生成有密码的客户端"></a>生成有密码的客户端</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Using SSL: openssl OpenSSL 1.1.1g  21 Apr 2020</span><br><span class="line">Generating a RSA private key</span><br><span class="line">.........................................+++++</span><br><span class="line">...............................................+++++</span><br><span class="line">writing new private key to &#x27;/etc/openvpn/pki/easy-rsa-1.MEMpOp/tmp.gLiNaP&#x27;</span><br><span class="line">Enter PEM pass phrase:  # 输入要设置的客户端的密码</span><br><span class="line">Verifying - Enter PEM pass phrase:</span><br><span class="line">-----</span><br><span class="line">Using configuration from /etc/openvpn/pki/easy-rsa-1.MEMpOp/tmp.gCiMLA</span><br><span class="line">Enter pass phrase for /etc/openvpn/pki/private/ca.key:  # 输入之前设置的证书密码</span><br><span class="line">Check that the request matches the signature</span><br><span class="line">Signature ok</span><br><span class="line">The Subject&#x27;s Distinguished Name is as follows</span><br><span class="line">commonName            :ASN.1 12:&#x27;jast3&#x27;</span><br><span class="line">Certificate is to be certified until Apr  2 07:24:36 2026 GMT (825 days)</span><br><span class="line"></span><br><span class="line">Write out database with 1 new entries</span><br><span class="line">Data Base Updated</span><br></pre></td></tr></table></figure>
+
+<h3 id="导出证书"><a href="#导出证书" class="headerlink" title="导出证书"></a>导出证书</h3><p>导出客户端认证文件到本地</p>
+<blockquote>
+<p>jast 为客户端名称</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /opt/openvpn:/etc/openvpn --<span class="built_in">rm</span> kylemanna/openvpn:2.4 ovpn_getclient jast &gt; /opt/jast.ovpn</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动VPN"><a href="#启动VPN" class="headerlink" title="启动VPN"></a>启动VPN</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run --name ov --restart=always --privileged=true -v /opt/openvpn:/etc/openvpn -d -p 1194:1194/tcp --cap-add=NET_ADMIN kylemanna/openvpn:2.4</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果公网访问VPN，公网的IP地址和端口要映射到当前容器所在服务器的1194端口</p>
+</blockquote>
+<h3 id="配置哪些流量走VPN"><a href="#配置哪些流量走VPN" class="headerlink" title="配置哪些流量走VPN"></a>配置哪些流量走VPN</h3><p>修改客户端文件<code>jast.ovpn</code>，在配置文件中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 表示不接受服务器对于修改路由表的推送，而可以按照我们之后指定的规则去修改</span><br><span class="line">route-nopull</span><br><span class="line"># 这个参数设置了路由的度量值（metric），用于确定路由的优先级。路由的度量值越小，优先级越高。在有多个路由规则匹配的情况下，系统会选择度量值最小的路由。</span><br><span class="line">route-metric 150</span><br><span class="line"># 远程主机（remote_host）的流量通过本地网关（net_gateway）发送</span><br><span class="line">route remote_host 255.255.255.255 net_gateway</span><br><span class="line"># 172.19.0.0/16网段的流量通过本地网关发送</span><br><span class="line">route 172.19.0.0 255.255.0.0 net_gateway</span><br><span class="line"># 192.168.1.0/16网段的流量通过VPN网关（vpn_gateway）发送</span><br><span class="line">route 192.168.1.0 255.255.0.0 vpn_gateway</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注释掉这一行</p>
+<blockquote>
+<p><code>redirect-gateway def1</code>作用是将默认网关重定向到 VPN 服务器上，所以要注释掉。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># edirect-gateway def1</span><br></pre></td></tr></table></figure>
+
+<p>客户端下载地址<br>Mac:<a href="https://tunnelblick.net/">https://tunnelblick.net/</a></p>
+<p>Win7:<a href="https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.8-I602-Win7.exe">https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.8-I602-Win7.exe</a></p>
+<p>Win10:<a href="https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.8-I602-Win10.exe">https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.8-I602-Win10.exe</a></p>
+<p>参考<br><a href="https://kui.li/675.html">https://kui.li/675.html</a></p>
+<p><a href="https://kyo86.com/2022/10/08/openvpn/">https://kyo86.com/2022/10/08/openvpn/</a></p>
+<p><a href="https://blog.csdn.net/weizhen330/article/details/132244496">https://blog.csdn.net/weizhen330/article/details/132244496</a></p>
+<p><a href="https://blog.csdn.net/qq_42761569/article/details/106538056">https://blog.csdn.net/qq_42761569/article/details/106538056</a></p>
+<p><a href="https://blog.csdn.net/zhangshenghang/article/details/135292267">https://blog.csdn.net/zhangshenghang/article/details/135292267</a></p>
+]]></content>
       <categories>
-        <category>Y</category>
-        <category>游戏</category>
-        <category>minecraft</category>
+        <category>O</category>
+        <category>OpenVPN</category>
       </categories>
       <tags>
-        <tag>游戏</tag>
+        <tag>VPN</tag>
       </tags>
   </entry>
   <entry>
@@ -692,6 +755,19 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
     <url>/2023/12/17/password/</url>
     <content><![CDATA[<p style="color: #FF0000;">无效：</p>
 75908，09066，09060，09069，77995，15902，77599，08526，09063，08652，07598，06980，05280，]]></content>
+  </entry>
+  <entry>
+    <title>电脑软件</title>
+    <url>/2023/12/14/pc-software/</url>
+    <content><![CDATA[<h1 id="实用"><a href="#实用" class="headerlink" title="实用"></a>实用</h1>]]></content>
+      <categories>
+        <category>Y</category>
+        <category>应用</category>
+        <category>电脑应用</category>
+      </categories>
+      <tags>
+        <tag>应用</tag>
+      </tags>
   </entry>
   <entry>
     <title>termux</title>
@@ -734,19 +810,6 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
-    <title>电脑软件</title>
-    <url>/2023/12/14/pc-software/</url>
-    <content><![CDATA[<h1 id="实用"><a href="#实用" class="headerlink" title="实用"></a>实用</h1>]]></content>
-      <categories>
-        <category>Y</category>
-        <category>应用</category>
-        <category>电脑应用</category>
-      </categories>
-      <tags>
-        <tag>应用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>视频制作</title>
     <url>/2023/11/05/video/</url>
     <content><![CDATA[<h1 id="视频录制工具"><a href="#视频录制工具" class="headerlink" title="视频录制工具"></a>视频录制工具</h1><h2 id="AZ-Screen-Recorder"><a href="#AZ-Screen-Recorder" class="headerlink" title="AZ Screen Recorder"></a>AZ Screen Recorder</h2><p>1.介绍<br>支持画笔<br>支持最高1080p 12Mpbs 120FPS<br>应用图片(放不下就看看吧)<br><img src="/2023/11/05/video/1.jpg" alt="图一"><br><img src="/2023/11/05/video/2.jpg" alt="图二"><br>2.下载链接<br><a href="https://www.123pan.com/s/wkn6Vv-3VpiH.html">123云盘下载_版本5.10.6</a>提取码：eqMd<br><a href="https://wwp.lanzoup.com/iM4H51dug88h">蓝奏云下载_版本5.10.6</a>提取码：8c5h</p>
@@ -781,5 +844,11 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       <tags>
         <tag>网站</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>win10-ftpserver</title>
+    <url>/2024/01/26/win10-ftpserver/</url>
+    <content><![CDATA[<p><a href="https://cloud.tencent.com/developer/article/1935592">win10系统下搭建FTP服务器(完成文件上传与下载)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+]]></content>
   </entry>
 </search>
