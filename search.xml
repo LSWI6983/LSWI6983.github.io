@@ -90,7 +90,19 @@
   <entry>
     <title>English</title>
     <url>/2023/11/26/English/</url>
-    <content><![CDATA[<h2 id="2024-2-18"><a href="#2024-2-18" class="headerlink" title="2024-2-18"></a>2024-2-18</h2><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="https://ctyunhljdcdn.qnqcdn.net/pycdn.qupeiyin.cn/dubbing/2024-02-18/1708261465u781347486.mp4?20240218" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; 
+    <content><![CDATA[<h2 id="2024-2-22"><a href="#2024-2-22" class="headerlink" title="2024-2-22"></a>2024-2-22</h2><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="https://ctyunhljdcdn.qnqcdn.net/pycdn.qupeiyin.cn/dubbing/2024-02-22/1708597913u781347483.mp4?20240222" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; 
+height: 80%; left: 0; top: 0;"> </iframe></div>
+
+<p><a href="https://ctyunhljdcdn.qnqcdn.net/pycdn.qupeiyin.cn/dubbing/2024-02-22/1708597913u781347483.mp4?20240222">视频链接</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">https://ctyunhljdcdn.qnqcdn.net/pycdn.qupeiyin.cn/dubbing/2024-02-22/1708597913u781347483.mp4?20240222</span><br></pre></td></tr></table></figure>
+
+<h2 id="2024-2-20"><a href="#2024-2-20" class="headerlink" title="2024-2-20"></a>2024-2-20</h2><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="https://ctyunhljdcdn.qnqcdn.net/pycdn.qupeiyin.cn/dubbing/2024-02-20/1708425075u781347482.mp4?20240220" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; 
+height: 80%; left: 0; top: 0;"> </iframe></div>
+
+<p><a href="https://ctyunhljdcdn.qnqcdn.net/pycdn.qupeiyin.cn/dubbing/2024-02-20/1708425075u781347482.mp4?20240220">视频链接</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">https://ctyunhljdcdn.qnqcdn.net/pycdn.qupeiyin.cn/dubbing/2024-02-20/1708425075u781347482.mp4?20240220</span><br></pre></td></tr></table></figure>
+
+<h2 id="2024-2-18"><a href="#2024-2-18" class="headerlink" title="2024-2-18"></a>2024-2-18</h2><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="https://ctyunhljdcdn.qnqcdn.net/pycdn.qupeiyin.cn/dubbing/2024-02-18/1708261465u781347486.mp4?20240218" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; 
 height: 80%; left: 0; top: 0;"> </iframe></div>
 
 <p><a href="https://ctyunhljdcdn.qnqcdn.net/pycdn.qupeiyin.cn/dubbing/2024-02-18/1708261465u781347486.mp4?20240218">视频链接</a></p>
@@ -213,7 +225,7 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
 <p><code>其他人都可以通过这个链接直接播放视频</code></p>
 <p style="color: #00FF00;">优点:</p>播放便捷
 
-<p style="color: #FF0000;">缺点:</p>有效期未知]]></content>
+<p style="color: #FF0000;">缺点:</p>有效期一年,一年后需要重新打开在趣配音里分享的链接激活一下.]]></content>
       <categories>
         <category>X</category>
         <category>学习</category>
@@ -458,6 +470,11 @@ height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
       </tags>
   </entry>
   <entry>
+    <title>feelings</title>
+    <url>/2024/03/01/feelings/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>如何使用filebrowser</title>
     <url>/2023/10/02/filebrowser/</url>
     <content><![CDATA[<h2 id="Linux下的使用教程"><a href="#Linux下的使用教程" class="headerlink" title="Linux下的使用教程"></a>Linux下的使用教程</h2><p>filebrowser是一个独立的文件管理工具，它使用go语言，不需要依赖直接.&#x2F;filebrowser即可运行，为了方便使用该篇文章叫你如何开机启动它。</p>
@@ -688,29 +705,6 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
-    <title>Termux上搭建hexo</title>
-    <url>/2023/11/25/hexo-termux/</url>
-    <content><![CDATA[<p>sed -i ‘s@^(deb.*stable main)$@#\1\ndeb <a href="https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24">https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24</a> stable main@’ $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list</p>
-<p>pkg update</p>
-<p>pkg install nodejs-lts<br>pkg install git<br>pkg install vim</p>
-<p>mkdir hexo<br>chmod 777 hexo<br>cd hexo</p>
-<p>npm install hexo-cli -g<br>hexo init</p>
-<p>hexo g<br>hexo s </p>
-<p>主题<br>git clone -b master <a href="https://github.com/jerryc127/hexo-theme-butterfly.git">https://github.com/jerryc127/hexo-theme-butterfly.git</a> themes&#x2F;butterfly</p>
-<p>vim themes&#x2F;butterfly&#x2F;_config.yml</p>
-<p>vim编辑器:<br>输入i才能编辑<br>按下esc 再输入:wq保存退出npm install hexo-renderer-pug hexo-renderer-stylus –save</p>
-]]></content>
-      <categories>
-        <category>H</category>
-        <category>hexo</category>
-        <category>termux</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>termux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo常用写作命令</title>
     <url>/2023/12/24/hexo-3/</url>
     <content><![CDATA[<h1 id="复制框"><a href="#复制框" class="headerlink" title="复制框"></a>复制框</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">``` bash```</span><br></pre></td></tr></table></figure>
@@ -780,6 +774,29 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
+    <title>Termux上搭建hexo</title>
+    <url>/2023/11/25/hexo-termux/</url>
+    <content><![CDATA[<p>sed -i ‘s@^(deb.*stable main)$@#\1\ndeb <a href="https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24">https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24</a> stable main@’ $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list</p>
+<p>pkg update</p>
+<p>pkg install nodejs-lts<br>pkg install git<br>pkg install vim</p>
+<p>mkdir hexo<br>chmod 777 hexo<br>cd hexo</p>
+<p>npm install hexo-cli -g<br>hexo init</p>
+<p>hexo g<br>hexo s </p>
+<p>主题<br>git clone -b master <a href="https://github.com/jerryc127/hexo-theme-butterfly.git">https://github.com/jerryc127/hexo-theme-butterfly.git</a> themes&#x2F;butterfly</p>
+<p>vim themes&#x2F;butterfly&#x2F;_config.yml</p>
+<p>vim编辑器:<br>输入i才能编辑<br>按下esc 再输入:wq保存退出npm install hexo-renderer-pug hexo-renderer-stylus –save</p>
+]]></content>
+      <categories>
+        <category>H</category>
+        <category>hexo</category>
+        <category>termux</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>termux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux</title>
     <url>/2023/11/23/linux/</url>
     <content><![CDATA[<h2 id="ssh连接工具"><a href="#ssh连接工具" class="headerlink" title="ssh连接工具"></a>ssh连接工具</h2><p>1.finalshell<br>仅有电脑版，但功能强大<br><a href="https://www.123pan.com/s/A6cA-2rHJh">点击前往123pan下载</a><br>2.Juicessh<br>安卓上比较好用的</p>
@@ -817,6 +834,11 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       <tags>
         <tag>Linux</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>me</title>
+    <url>/2024/03/01/me/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>minecraft服务器</title>
