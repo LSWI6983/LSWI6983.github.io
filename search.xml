@@ -1,71 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>常用指令</title>
-    <url>/2023/10/09/Common-instruction/</url>
-    <content><![CDATA[<h2 id="文件管理指令"><a href="#文件管理指令" class="headerlink" title="文件管理指令"></a>文件管理指令</h2><p>1.nano(系统自带的短小美)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano </span><br></pre></td></tr></table></figure>
-<p>2.vim(比较常用的)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim </span><br></pre></td></tr></table></figure>
-<h1 id="fastboot"><a href="#fastboot" class="headerlink" title="fastboot"></a>fastboot</h1><p>进入方法:<br>电源键加音量-键进入或者使用这条指令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb rebboot bootloader</span><br></pre></td></tr></table></figure>
-<p>fastboot是一种比recovery更底层的模式，俗称线刷</p>
-<h3 id="查看连接设备"><a href="#查看连接设备" class="headerlink" title="查看连接设备"></a>查看连接设备</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot devices</span><br></pre></td></tr></table></figure>
-<h3 id="获取手机相关信息"><a href="#获取手机相关信息" class="headerlink" title="获取手机相关信息"></a>获取手机相关信息</h3><p>1.输出该设备的所有信息</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot getvar all</span><br></pre></td></tr></table></figure>
-<p>2.输出该机型内部代号名称（线刷包文件名前缀）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot getvar product</span><br></pre></td></tr></table></figure>
-<p>3.输出防回滚机制（ANTI）版本号</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot getvar anti</span><br></pre></td></tr></table></figure>
-<h3 id="关于重启"><a href="#关于重启" class="headerlink" title="关于重启"></a>关于重启</h3><p>1.重启手机</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot reboot</span><br></pre></td></tr></table></figure>
-<p>2.重启到bootloader模式</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot reboot-bootloader</span><br></pre></td></tr></table></figure>
-<p>3.重启到HTC RUU刷机模式</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem rebootRUU</span><br></pre></td></tr></table></figure>
-<p>4.进高通edl模式(9008模式)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem edl</span><br></pre></td></tr></table></figure>
-<p>5.退出fastboot模式并关闭设备</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem poweroff</span><br></pre></td></tr></table></figure>
-<p>6.退出fastboot模式并重启进入Recovery模式</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem reboot-recovery</span><br></pre></td></tr></table></figure>
-<h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><p>先介绍一下fastboot的常操作的一些分区</p>
-<p>1.system:系统分区<br>2.userdata:数据分区<br>3.cache:缓存分区，擦除这个分区，不会影响个人数据，只是删除了这个分区中已经保存的缓存内容，缓存内容会在后续手机使用过程中重新自动生成。<br>4.recovery:Recovery分区.相当于电脑pe<br>5.boot:存放内核和ramdisk的分区<br>6.hboot:这个是SPL所在的分区.很重要哦.也是7.fastboot所在的分区.刷错就真的变砖了<br>8.splash1:这个就是开机第一屏幕了<br>9.radio:基带<br>10.oem:(运营商配置文件，和运营商配置有关)</p>
-<h3 id="写入指令-flash"><a href="#写入指令-flash" class="headerlink" title="写入指令(flash)"></a>写入指令(flash)</h3><p>使用格式:<br>fastboot flash &lt;要刷写的对应分区&gt; &lt;某个目录下的要刷写的镜像&gt;</p>
-<p>内核临时引导启动(相当于电脑的PE)<br>fastboot boot &lt;内核镜像文件名或路径&gt;</p>
-<p>1.写入system分区(还有分段式的方法：刷机时，方法还是一致的，只不过要从分段0开始，按次序刷到分段N)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash system system.img</span><br></pre></td></tr></table></figure>
-<p>2.刷人boot分区(内核)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash boot boot.img</span><br></pre></td></tr></table></figure>
-<p>3.写入recovery分区(大家常用的卡刷模式所在分区)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash recovery recovery.img</span><br></pre></td></tr></table></figure>
-<p>刷完后直接电源键加音量+键进入recovery，不然还是原版recovery镜像。<br>或者尝试fastboot oem reboot-recovery<br>4.刷写radio分区(基带)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash radio radio.img</span><br></pre></td></tr></table></figure>
-<p>5.刷写oem分区(运营商配置文件，和运营商配置有关)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash oem oem.img</span><br></pre></td></tr></table></figure>
-<h3 id="清空指令-erase"><a href="#清空指令-erase" class="headerlink" title="清空指令(erase)"></a>清空指令(erase)</h3><p>顺便送个指令<br>手机资料全部清空</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot -w</span><br></pre></td></tr></table></figure>
-<p>等同于系统中的“恢复出厂设置”，或Recovery模式的“清空所有数据”操作。</p>
-<p>支持刷入的分区名可通过fastboot getvar all查询</p>
-<p>erase使用的格式<br>fastboot erase &lt;要清空的分区名&gt;</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot erase </span><br></pre></td></tr></table></figure>
-<h3 id="解锁相关-bootloader简称BL"><a href="#解锁相关-bootloader简称BL" class="headerlink" title="解锁相关(bootloader简称BL)"></a>解锁相关(bootloader简称BL)</h3><p>查看是否上锁<br>方法1</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem device-info</span><br></pre></td></tr></table></figure>
-<p>方法2</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem lks</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Z</category>
-        <category>指令</category>
-        <category>常用</category>
-      </categories>
-      <tags>
-        <tag>指令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker</title>
-    <url>/2023/11/23/Docker/</url>
+    <url>/posts/40991/</url>
     <content><![CDATA[<h1 id="Docker使用"><a href="#Docker使用" class="headerlink" title="Docker使用"></a>Docker使用</h1><h2 id="Portainer-可视化容器管理工具"><a href="#Portainer-可视化容器管理工具" class="headerlink" title="Portainer(可视化容器管理工具)"></a>Portainer(可视化容器管理工具)</h2><p>安装好Docker后输入这个<br>1).</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker volume create portainer_data</span><br></pre></td></tr></table></figure>
 <p>2).启动(端口9000，前一个是访问的端口9000)</p>
@@ -89,7 +26,7 @@
   </entry>
   <entry>
     <title>English</title>
-    <url>/2023/11/26/English/</url>
+    <url>/posts/4288/</url>
     <content><![CDATA[<h2 id="2024-2-22"><a href="#2024-2-22" class="headerlink" title="2024-2-22"></a>2024-2-22</h2><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="https://ctyunhljdcdn.qnqcdn.net/pycdn.qupeiyin.cn/dubbing/2024-02-22/1708597913u781347483.mp4?20240222" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; 
 height: 80%; left: 0; top: 0;"> </iframe></div>
 
@@ -171,56 +108,56 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">https://3026320471.qnqcdn.net:22443/qn-c0FRw9iNhKSZLNhoiFj4uMVYtWjsUJSk2XG0aLw4.pycdn.qupeiyin.cn/2017-03-28/1490690407466mdamt.mp4</span><br></pre></td></tr></table></figure>
 <h2 id="视频直接播放方法"><a href="#视频直接播放方法" class="headerlink" title="视频直接播放方法"></a>视频直接播放方法</h2><p>需要下载第三方工具</p>
 <h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><code>IDM下载工具</code><br><a href="https://www.123pan.com/s/wkn6Vv-rkfiH.html">点击前往下载</a></p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程:"></a>视频教程:</h3><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"hotkey":true,"preload":"metadata","video":{"url":"/2023/11/26/English/sp.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程:"></a>视频教程:</h3><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"hotkey":true,"preload":"metadata","video":{"url":"/posts/4288/sp.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 <p>这个可能在这里播放不了请点击下方访问<br><a href="https://lswi6983.github.io/2023/11/26/English/sp.mp4">点击前往</a></p>
 <p>或者点<a href="https://gitee.com/tiepi04/tiepi04/raw/master/2023/11/26/English/sp.mp4">此处</a>下载</p>
-<h3 id="图文教程"><a href="#图文教程" class="headerlink" title="图文教程:"></a>图文教程:</h3><h4 id="所需应用"><a href="#所需应用" class="headerlink" title="所需应用"></a>所需应用</h4><p><img src="/2023/11/26/English/main.jpg" alt="所需应用"></p>
+<h3 id="图文教程"><a href="#图文教程" class="headerlink" title="图文教程:"></a>图文教程:</h3><h4 id="所需应用"><a href="#所需应用" class="headerlink" title="所需应用"></a>所需应用</h4><p><img src="/posts/4288/main.jpg" alt="所需应用"></p>
 <h4 id="获得视频分享链接"><a href="#获得视频分享链接" class="headerlink" title="获得视频分享链接"></a>获得视频分享链接</h4><li style="margin-left: 40px;font-size: 15px">进入“英语趣配音”</li>
 
 <p><ins>在底部点“我”</ins></p>
-<p><img src="/2023/11/26/English/yy_1.jpg" alt="1"></p>
+<p><img src="/posts/4288/yy_1.jpg" alt="1"></p>
 <li style="margin-left: 40px;font-size: 15px">点击“我的配音”</li>
 
-<p><img src="/2023/11/26/English/yy_2.jpg" alt="2"></p>
+<p><img src="/posts/4288/yy_2.jpg" alt="2"></p>
 <li style="margin-left: 40px;font-size: 15px">获取分享链接</li>
 
-<p><img src="/2023/11/26/English/yy_3.jpg" alt="3"></p>
+<p><img src="/posts/4288/yy_3.jpg" alt="3"></p>
 <h4 id="获取视频直链或下载视频"><a href="#获取视频直链或下载视频" class="headerlink" title="获取视频直链或下载视频"></a>获取视频直链或下载视频</h4><li style="margin-left: 40px;font-size: 15px">打开IDM下载器</li>
 
-<p><img src="/2023/11/26/English/main2.jpg" alt="IDM下载器"></p>
+<p><img src="/posts/4288/main2.jpg" alt="IDM下载器"></p>
 <li style="margin-left: 40px;font-size: 15px">设置语言</li>
 
-<p><img src="/2023/11/26/English/idm_1.jpg" alt="idm_languages"></p>
+<p><img src="/posts/4288/idm_1.jpg" alt="idm_languages"></p>
 <li style="margin-left: 40px;font-size: 15px">设置存储权限</li>
 
-<p><img src="/2023/11/26/English/idm_2.jpg" alt="idm_2"></p>
+<p><img src="/posts/4288/idm_2.jpg" alt="idm_2"></p>
 <li style="margin-left: 40px;font-size: 15px">选择下载存储位置</li>
 
-<p><img src="/2023/11/26/English/idm_3.jpg" alt="idm_3"></p>
+<p><img src="/posts/4288/idm_3.jpg" alt="idm_3"></p>
 <p><code>一直点空白处</code></p>
 <p style="color: #FF0000;">不创建idm浏览器</p>
 
 
 <li style="margin-left: 40px;font-size: 15px">进入idm浏览器</li>
 
-<p><img src="/2023/11/26/English/idm_4.jpg" alt="idm_4"></p>
+<p><img src="/posts/4288/idm_4.jpg" alt="idm_4"></p>
 <li style="margin-left: 40px;font-size: 15px">在搜索框中输入链接</li>
 
 <p><code>记得按回车进入网站</code></p>
-<p><img src="/2023/11/26/English/idm_5.jpg" alt="idm_5"></p>
+<p><img src="/posts/4288/idm_5.jpg" alt="idm_5"></p>
 <li style="margin-left: 40px;font-size: 15px">点击下载图标</li>
 
-<p><img src="/2023/11/26/English/idm_6.jpg" alt="idm_6"></p>
+<p><img src="/posts/4288/idm_6.jpg" alt="idm_6"></p>
 <li style="margin-left: 40px;font-size: 15px">获取视频直链</li>
 
-<p><img src="/2023/11/26/English/idm_7.jpg" alt="idm_7"></p>
+<p><img src="/posts/4288/idm_7.jpg" alt="idm_7"></p>
 <p><code>然后选择预览(也可以直接下载)</code></p>
-<p><img src="/2023/11/26/English/idm_8.jpg" alt="idm_8"></p>
+<p><img src="/posts/4288/idm_8.jpg" alt="idm_8"></p>
 <p><code>点击预览后进行这一步</code></p>
-<p><img src="/2023/11/26/English/idm_9.jpg" alt="idm_9"></p>
+<p><img src="/posts/4288/idm_9.jpg" alt="idm_9"></p>
 <p><code>复制链接</code></p>
-<p><img src="/2023/11/26/English/idm_10.jpg" alt="idm_10"></p>
+<p><img src="/posts/4288/idm_10.jpg" alt="idm_10"></p>
 <p><code>最后把这个链接分享给其他人就行了</code></p>
 <p><code>其他人都可以通过这个链接直接播放视频</code></p>
 <p style="color: #00FF00;">优点:</p>播放便捷
@@ -236,12 +173,75 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
+    <title>常用指令</title>
+    <url>/posts/7590/</url>
+    <content><![CDATA[<h2 id="文件管理指令"><a href="#文件管理指令" class="headerlink" title="文件管理指令"></a>文件管理指令</h2><p>1.nano(系统自带的短小美)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano </span><br></pre></td></tr></table></figure>
+<p>2.vim(比较常用的)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim </span><br></pre></td></tr></table></figure>
+<h1 id="fastboot"><a href="#fastboot" class="headerlink" title="fastboot"></a>fastboot</h1><p>进入方法:<br>电源键加音量-键进入或者使用这条指令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb rebboot bootloader</span><br></pre></td></tr></table></figure>
+<p>fastboot是一种比recovery更底层的模式，俗称线刷</p>
+<h3 id="查看连接设备"><a href="#查看连接设备" class="headerlink" title="查看连接设备"></a>查看连接设备</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot devices</span><br></pre></td></tr></table></figure>
+<h3 id="获取手机相关信息"><a href="#获取手机相关信息" class="headerlink" title="获取手机相关信息"></a>获取手机相关信息</h3><p>1.输出该设备的所有信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot getvar all</span><br></pre></td></tr></table></figure>
+<p>2.输出该机型内部代号名称（线刷包文件名前缀）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot getvar product</span><br></pre></td></tr></table></figure>
+<p>3.输出防回滚机制（ANTI）版本号</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot getvar anti</span><br></pre></td></tr></table></figure>
+<h3 id="关于重启"><a href="#关于重启" class="headerlink" title="关于重启"></a>关于重启</h3><p>1.重启手机</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot reboot</span><br></pre></td></tr></table></figure>
+<p>2.重启到bootloader模式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot reboot-bootloader</span><br></pre></td></tr></table></figure>
+<p>3.重启到HTC RUU刷机模式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem rebootRUU</span><br></pre></td></tr></table></figure>
+<p>4.进高通edl模式(9008模式)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem edl</span><br></pre></td></tr></table></figure>
+<p>5.退出fastboot模式并关闭设备</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem poweroff</span><br></pre></td></tr></table></figure>
+<p>6.退出fastboot模式并重启进入Recovery模式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem reboot-recovery</span><br></pre></td></tr></table></figure>
+<h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><p>先介绍一下fastboot的常操作的一些分区</p>
+<p>1.system:系统分区<br>2.userdata:数据分区<br>3.cache:缓存分区，擦除这个分区，不会影响个人数据，只是删除了这个分区中已经保存的缓存内容，缓存内容会在后续手机使用过程中重新自动生成。<br>4.recovery:Recovery分区.相当于电脑pe<br>5.boot:存放内核和ramdisk的分区<br>6.hboot:这个是SPL所在的分区.很重要哦.也是7.fastboot所在的分区.刷错就真的变砖了<br>8.splash1:这个就是开机第一屏幕了<br>9.radio:基带<br>10.oem:(运营商配置文件，和运营商配置有关)</p>
+<h3 id="写入指令-flash"><a href="#写入指令-flash" class="headerlink" title="写入指令(flash)"></a>写入指令(flash)</h3><p>使用格式:<br>fastboot flash &lt;要刷写的对应分区&gt; &lt;某个目录下的要刷写的镜像&gt;</p>
+<p>内核临时引导启动(相当于电脑的PE)<br>fastboot boot &lt;内核镜像文件名或路径&gt;</p>
+<p>1.写入system分区(还有分段式的方法：刷机时，方法还是一致的，只不过要从分段0开始，按次序刷到分段N)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash system system.img</span><br></pre></td></tr></table></figure>
+<p>2.刷人boot分区(内核)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash boot boot.img</span><br></pre></td></tr></table></figure>
+<p>3.写入recovery分区(大家常用的卡刷模式所在分区)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash recovery recovery.img</span><br></pre></td></tr></table></figure>
+<p>刷完后直接电源键加音量+键进入recovery，不然还是原版recovery镜像。<br>或者尝试fastboot oem reboot-recovery<br>4.刷写radio分区(基带)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash radio radio.img</span><br></pre></td></tr></table></figure>
+<p>5.刷写oem分区(运营商配置文件，和运营商配置有关)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot flash oem oem.img</span><br></pre></td></tr></table></figure>
+<h3 id="清空指令-erase"><a href="#清空指令-erase" class="headerlink" title="清空指令(erase)"></a>清空指令(erase)</h3><p>顺便送个指令<br>手机资料全部清空</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot -w</span><br></pre></td></tr></table></figure>
+<p>等同于系统中的“恢复出厂设置”，或Recovery模式的“清空所有数据”操作。</p>
+<p>支持刷入的分区名可通过fastboot getvar all查询</p>
+<p>erase使用的格式<br>fastboot erase &lt;要清空的分区名&gt;</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot erase </span><br></pre></td></tr></table></figure>
+<h3 id="解锁相关-bootloader简称BL"><a href="#解锁相关-bootloader简称BL" class="headerlink" title="解锁相关(bootloader简称BL)"></a>解锁相关(bootloader简称BL)</h3><p>查看是否上锁<br>方法1</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem device-info</span><br></pre></td></tr></table></figure>
+<p>方法2</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fastboot oem lks</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Z</category>
+        <category>指令</category>
+        <category>常用</category>
+      </categories>
+      <tags>
+        <tag>指令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux的常用的指令</title>
-    <url>/2023/10/03/Linux-1/</url>
+    <url>/posts/6866/</url>
     <content><![CDATA[<p>这篇关于Linux常用的关于关于存储和管理密码 ，WiFi等的命令。</p>
 <h2 id="一-内存"><a href="#一-内存" class="headerlink" title="一.内存"></a>一.内存</h2><h3 id="查看剩余内存-1"><a href="#查看剩余内存-1" class="headerlink" title="查看剩余内存-1"></a>查看剩余内存-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></table></figure>
 <h3 id="查看剩余寿命-固态-2"><a href="#查看剩余寿命-固态-2" class="headerlink" title="查看剩余寿命(固态)-2"></a>查看剩余寿命(固态)-2</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /sys/class/mmc_host/mmc0/mmc0:0001/life_time</span><br></pre></td></tr></table></figure>
-<p>0X04 用了40%的寿命<br>0X08 用了80%的寿命<br>0X00 看不到寿命<br>·如图<br><img src="/2023/10/03/Linux-1/EMMC.png" alt="EMMC寿命对照表"><br>所以你已经懂它的格式了吧<br>不懂我就给你看两张照片对比一下<br>看不到寿命或满血的情况<br><img src="/2023/10/03/Linux-1/1.jpg" alt="看不到寿命的情况"><br>能看到寿命的情况<br><img src="/2023/10/03/Linux-1/2.jpg" alt="能看到寿命的情况"></p>
+<p>0X04 用了40%的寿命<br>0X08 用了80%的寿命<br>0X00 看不到寿命<br>·如图<br><img src="/posts/6866/EMMC.png" alt="EMMC寿命对照表"><br>所以你已经懂它的格式了吧<br>不懂我就给你看两张照片对比一下<br>看不到寿命或满血的情况<br><img src="/posts/6866/1.jpg" alt="看不到寿命的情况"><br>能看到寿命的情况<br><img src="/posts/6866/2.jpg" alt="能看到寿命的情况"></p>
 <h2 id="二-网络"><a href="#二-网络" class="headerlink" title="二.网络"></a>二.网络</h2><h3 id="设置网络-WiFi或USB网络设置-1"><a href="#设置网络-WiFi或USB网络设置-1" class="headerlink" title="设置网络(WiFi或USB网络设置)-1"></a>设置网络(WiFi或USB网络设置)-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmtui</span><br></pre></td></tr></table></figure>
 <p>设置后最好再reboot重启一下</p>
 <h3 id="查看ip-2"><a href="#查看ip-2" class="headerlink" title="查看ip-2"></a>查看ip-2</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
@@ -259,8 +259,8 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
       <categories>
         <category>Z</category>
         <category>指令</category>
-        <category>Linux指令</category>
         <category>L</category>
+        <category>Linux指令</category>
         <category>Linux</category>
       </categories>
       <tags>
@@ -269,7 +269,7 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>Root</title>
-    <url>/2023/10/19/Root/</url>
+    <url>/posts/29197/</url>
     <content><![CDATA[<h1 id="检测工具"><a href="#检测工具" class="headerlink" title="检测工具"></a>检测工具</h1><p>1.”momo”环境检测4.4.1版<br><a href="https://www.123pan.com/s/wkn6Vv-eipiH.html">123云盘下载_版本4.4.1</a><br><a href="https://wwp.lanzoup.com/iC9SP1dug0qh">蓝奏云下载_版本4.4.1</a>提取码：2r5d</p>
 ]]></content>
       <categories>
@@ -283,7 +283,7 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>adb-scrcpy</title>
-    <url>/2024/01/30/adb-scrcpy/</url>
+    <url>/posts/1394/</url>
     <content><![CDATA[<blockquote>
 <p>使用前先用adb连接上设备</p>
 </blockquote>
@@ -406,7 +406,7 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>adb</title>
-    <url>/2023/10/19/adb/</url>
+    <url>/posts/63482/</url>
     <content><![CDATA[<h3 id="设置屏幕息屏时间-1"><a href="#设置屏幕息屏时间-1" class="headerlink" title="设置屏幕息屏时间-1"></a>设置屏幕息屏时间-1</h3><p>永不息屏</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">settings put system screen_off_timeout 2147483647</span><br></pre></td></tr></table></figure>
 <p>查看息屏时间</p>
@@ -429,7 +429,7 @@ height: 80%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>实用软件</title>
-    <url>/2023/11/05/app/</url>
+    <url>/posts/26616/</url>
     <content><![CDATA[<h1 id="实用"><a href="#实用" class="headerlink" title="实用"></a>实用</h1><h2 id="Rotation-屏幕强制旋转"><a href="#Rotation-屏幕强制旋转" class="headerlink" title="Rotation(屏幕强制旋转)"></a>Rotation(屏幕强制旋转)</h2><p><a href="https://www.123pan.com/s/wkn6Vv-QVpiH.html">123云盘下载_版本25.0.2</a>提取码：WfSp</p>
 <h2 id="IP摄像头"><a href="#IP摄像头" class="headerlink" title="IP摄像头"></a>IP摄像头</h2><li style="margin-left: 40px;font-size: 15px">下载</li>
 [123云盘下载](https://www.123pan.com/s/wkn6Vv-vgfiH.html)提取码：Mwqm
@@ -457,7 +457,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
   </entry>
   <entry>
     <title>生态瓶</title>
-    <url>/2023/12/22/ecosystem/</url>
+    <url>/posts/63466/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>X</category>
@@ -471,12 +471,12 @@ height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
   </entry>
   <entry>
     <title>feelings</title>
-    <url>/2024/03/01/feelings/</url>
+    <url>/posts/27709/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>如何使用filebrowser</title>
-    <url>/2023/10/02/filebrowser/</url>
+    <url>/posts/29696/</url>
     <content><![CDATA[<h2 id="Linux下的使用教程"><a href="#Linux下的使用教程" class="headerlink" title="Linux下的使用教程"></a>Linux下的使用教程</h2><p>filebrowser是一个独立的文件管理工具，它使用go语言，不需要依赖直接.&#x2F;filebrowser即可运行，为了方便使用该篇文章叫你如何开机启动它。</p>
 <h3 id="查看架构-1"><a href="#查看架构-1" class="headerlink" title="查看架构-1"></a>查看架构-1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">arch</span></span><br></pre></td></tr></table></figure>
 
@@ -512,7 +512,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
   </entry>
   <entry>
     <title>修手机</title>
-    <url>/2023/12/17/fix-phone/</url>
+    <url>/posts/33558/</url>
     <content><![CDATA[<h1 id="小米"><a href="#小米" class="headerlink" title="小米"></a>小米</h1><li style="margin-left: 40px;font-size: 15px">一键锁屏</li>
 
 <p>在添加小部件里可能找不到<b>一键锁屏</b>，你只需要<code>断开网络</code>然后在添加小部件最下方就会多出一个选项，在那里应该就能找到<b>一键锁屏</b>了。</p>
@@ -529,12 +529,12 @@ height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
   </entry>
   <entry>
     <title>git</title>
-    <url>/2023/12/03/git/</url>
+    <url>/posts/43167/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Hexo的基本使用</title>
-    <url>/2023/11/24/hexo-2/</url>
+    <url>/posts/52120/</url>
     <content><![CDATA[<p>这个页面主要用来测试功能</p>
 <h2 id="1-粗体"><a href="#1-粗体" class="headerlink" title="1.粗体"></a>1.粗体</h2><p>这个字体更粗<b>粗体</b></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;b&gt;粗体&lt;/b&gt;</span><br></pre></td></tr></table></figure>
@@ -542,7 +542,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>]]></content>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;p style=<span class="string">&quot;color: #FF0000;&quot;</span>&gt;红色&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 下面是搜集的颜色列表:
 
-<p><img src="/2023/11/24/hexo-2/colour.png" alt="颜色表"></p>
+<p><img src="/posts/52120/colour.png" alt="颜色表"></p>
 <h2 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h2><p><i>斜体</i></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;i&gt;斜体&lt;/i&gt;</span><br></pre></td></tr></table></figure>
 
@@ -706,7 +706,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>hexo常用写作命令</title>
-    <url>/2023/12/24/hexo-3/</url>
+    <url>/posts/32196/</url>
     <content><![CDATA[<h1 id="复制框"><a href="#复制框" class="headerlink" title="复制框"></a>复制框</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">``` bash```</span><br></pre></td></tr></table></figure>
 
 <h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1>]]></content>
@@ -720,8 +720,31 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
+    <title>Termux上搭建hexo</title>
+    <url>/posts/2891/</url>
+    <content><![CDATA[<p>sed -i ‘s@^(deb.*stable main)$@#\1\ndeb <a href="https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24">https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24</a> stable main@’ $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list</p>
+<p>pkg update</p>
+<p>pkg install nodejs-lts<br>pkg install git<br>pkg install vim</p>
+<p>mkdir hexo<br>chmod 777 hexo<br>cd hexo</p>
+<p>npm install hexo-cli -g<br>hexo init</p>
+<p>hexo g<br>hexo s </p>
+<p>主题<br>git clone -b master <a href="https://github.com/jerryc127/hexo-theme-butterfly.git">https://github.com/jerryc127/hexo-theme-butterfly.git</a> themes&#x2F;butterfly</p>
+<p>vim themes&#x2F;butterfly&#x2F;_config.yml</p>
+<p>vim编辑器:<br>输入i才能编辑<br>按下esc 再输入:wq保存退出npm install hexo-renderer-pug hexo-renderer-stylus –save</p>
+]]></content>
+      <categories>
+        <category>H</category>
+        <category>hexo</category>
+        <category>termux</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>termux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo的安装</title>
-    <url>/2023/11/24/hexo/</url>
+    <url>/posts/4752/</url>
     <content><![CDATA[<p>hexo g 创建静态文件<br>hexo s 启动<br>hexo clean 清除缓存<br>hexo d 推送文件<br>hexo new “My New Post” 创建新文章</p>
 <h1 id="安装nodejs和git"><a href="#安装nodejs和git" class="headerlink" title="安装nodejs和git"></a>安装nodejs和git</h1><p>安装nodejs</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Linux安装nodejs</span></span><br><span class="line">curl -sL https://deb.nodesource.com/setup_10.x|sudo -E bash -</span><br><span class="line">sudo apt install nodejs</span><br></pre></td></tr></table></figure>
@@ -774,31 +797,8 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
       </tags>
   </entry>
   <entry>
-    <title>Termux上搭建hexo</title>
-    <url>/2023/11/25/hexo-termux/</url>
-    <content><![CDATA[<p>sed -i ‘s@^(deb.*stable main)$@#\1\ndeb <a href="https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24">https://mirrors.tuna.tsinghua.edu.cn/termux/termux-packages-24</a> stable main@’ $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list</p>
-<p>pkg update</p>
-<p>pkg install nodejs-lts<br>pkg install git<br>pkg install vim</p>
-<p>mkdir hexo<br>chmod 777 hexo<br>cd hexo</p>
-<p>npm install hexo-cli -g<br>hexo init</p>
-<p>hexo g<br>hexo s </p>
-<p>主题<br>git clone -b master <a href="https://github.com/jerryc127/hexo-theme-butterfly.git">https://github.com/jerryc127/hexo-theme-butterfly.git</a> themes&#x2F;butterfly</p>
-<p>vim themes&#x2F;butterfly&#x2F;_config.yml</p>
-<p>vim编辑器:<br>输入i才能编辑<br>按下esc 再输入:wq保存退出npm install hexo-renderer-pug hexo-renderer-stylus –save</p>
-]]></content>
-      <categories>
-        <category>H</category>
-        <category>hexo</category>
-        <category>termux</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>termux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux</title>
-    <url>/2023/11/23/linux/</url>
+    <url>/posts/15691/</url>
     <content><![CDATA[<h2 id="ssh连接工具"><a href="#ssh连接工具" class="headerlink" title="ssh连接工具"></a>ssh连接工具</h2><p>1.finalshell<br>仅有电脑版，但功能强大<br><a href="https://www.123pan.com/s/A6cA-2rHJh">点击前往123pan下载</a><br>2.Juicessh<br>安卓上比较好用的</p>
 <h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><h2 id="检查某端口是否开启"><a href="#检查某端口是否开启" class="headerlink" title="检查某端口是否开启"></a>检查某端口是否开启</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-port=25/tcp --zone=public  <span class="comment">#查询25端口是否开启,自行修改端口号</span></span><br><span class="line">firewall-cmd --query-port=80/tcp --zone=public  <span class="comment">#查询80端口是否开启,自行修改端口号</span></span><br><span class="line">firewall-cmd --query-port=888/tcp --zone=public  <span class="comment">#查询888端口是否开启,自行修改端口号</span></span><br><span class="line">firewall-cmd --query-port=8888/tcp --zone=public  <span class="comment">#查询8888端口是否开启,自行修改端口号</span></span><br><span class="line">firewall-cmd --query-port=8889/tcp --zone=public  <span class="comment">#查询8889端口是否开启,自行修改端口号</span></span><br><span class="line">firewall-cmd --query-port=443/tcp --zone=public  <span class="comment">#查询443端口是否开启,自行修改端口号</span></span><br><span class="line">firewall-cmd --query-port=20/tcp --zone=public  <span class="comment">#查询20端口是否开启,自行修改端口号</span></span><br><span class="line">firewall-cmd --query-port=21/tcp --zone=public  <span class="comment">#查询21端口是否开启,自行修改端口号</span></span><br></pre></td></tr></table></figure>
 <p>返回no即未开启，显示yes为已开启。</p>
@@ -837,12 +837,12 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>me</title>
-    <url>/2024/03/01/me/</url>
+    <url>/posts/48108/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>minecraft服务器</title>
-    <url>/2023/12/03/minecraft-server/</url>
+    <url>/posts/58654/</url>
     <content><![CDATA[<h1 id="基岩版服务器搭建"><a href="#基岩版服务器搭建" class="headerlink" title="基岩版服务器搭建"></a>基岩版服务器搭建</h1><h2 id="下载服务器文件"><a href="#下载服务器文件" class="headerlink" title="下载服务器文件"></a>下载服务器文件</h2><p><a href="https://www.minecraft.net/zh-hans/download/server/bedrock">服务器包下载链接</a></p>
 <h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>1.找一个文件夹把下载的压缩包解压<br>(解压路径不能有中文)<br>    kr-se-cncn-1.openfrp.top:19100<br><a href="http://www.openfrp.net/">www.openfrp.net</a></p>
 <div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><p>no url specified, no dplayer _(:3」∠)_</p>
@@ -863,7 +863,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>minecraft</title>
-    <url>/2023/12/03/minecraft/</url>
+    <url>/posts/51733/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Y</category>
@@ -876,7 +876,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>OpenVPN</title>
-    <url>/2024/01/25/openvpn/</url>
+    <url>/posts/12473/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/zhangshenghang/article/details/135292267">https://blog.csdn.net/zhangshenghang/article/details/135292267</a>)</p>
 <h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull kylemanna/openvpn:2.4</span><br></pre></td></tr></table></figure>
 
@@ -939,13 +939,13 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>password</title>
-    <url>/2023/12/17/password/</url>
+    <url>/posts/51319/</url>
     <content><![CDATA[<p style="color: #FF0000;">无效：</p>
 75908，09066，09060，09069，77995，15902，77599，08526，09063，08652，07598，06980，05280，]]></content>
   </entry>
   <entry>
     <title>电脑软件</title>
-    <url>/2023/12/14/pc-software/</url>
+    <url>/posts/2118/</url>
     <content><![CDATA[<h1 id="实用"><a href="#实用" class="headerlink" title="实用"></a>实用</h1>]]></content>
       <categories>
         <category>Y</category>
@@ -958,7 +958,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>termux</title>
-    <url>/2023/10/19/termux/</url>
+    <url>/posts/44010/</url>
     <content><![CDATA[<h1 id="一-准备"><a href="#一-准备" class="headerlink" title="一.准备"></a>一.准备</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://www.123pan.com/s/wkn6Vv-AVpiH.html">123云盘下载_版本0.118.0</a>提取码：7qQk<br><a href="https://wwp.lanzoup.com/iDBWX1dugbpc">蓝奏云下载_版本0.118.0</a>提取码：acmx</p>
 <h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">termux-change-repo <span class="keyword">in</span> turmux-tools</span><br></pre></td></tr></table></figure>
 <p>然后更新一下</p>
@@ -998,8 +998,8 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>视频制作</title>
-    <url>/2023/11/05/video/</url>
-    <content><![CDATA[<h1 id="视频录制工具"><a href="#视频录制工具" class="headerlink" title="视频录制工具"></a>视频录制工具</h1><h2 id="AZ-Screen-Recorder"><a href="#AZ-Screen-Recorder" class="headerlink" title="AZ Screen Recorder"></a>AZ Screen Recorder</h2><p>1.介绍<br>支持画笔<br>支持最高1080p 12Mpbs 120FPS<br>应用图片(放不下就看看吧)<br><img src="/2023/11/05/video/1.jpg" alt="图一"><br><img src="/2023/11/05/video/2.jpg" alt="图二"><br>2.下载链接<br><a href="https://www.123pan.com/s/wkn6Vv-3VpiH.html">123云盘下载_版本5.10.6</a>提取码：eqMd<br><a href="https://wwp.lanzoup.com/iM4H51dug88h">蓝奏云下载_版本5.10.6</a>提取码：8c5h</p>
+    <url>/posts/12501/</url>
+    <content><![CDATA[<h1 id="视频录制工具"><a href="#视频录制工具" class="headerlink" title="视频录制工具"></a>视频录制工具</h1><h2 id="AZ-Screen-Recorder"><a href="#AZ-Screen-Recorder" class="headerlink" title="AZ Screen Recorder"></a>AZ Screen Recorder</h2><p>1.介绍<br>支持画笔<br>支持最高1080p 12Mpbs 120FPS<br>应用图片(放不下就看看吧)<br><img src="/posts/12501/1.jpg" alt="图一"><br><img src="/posts/12501/2.jpg" alt="图二"><br>2.下载链接<br><a href="https://www.123pan.com/s/wkn6Vv-3VpiH.html">123云盘下载_版本5.10.6</a>提取码：eqMd<br><a href="https://wwp.lanzoup.com/iM4H51dug88h">蓝奏云下载_版本5.10.6</a>提取码：8c5h</p>
 <h1 id="视频剪辑工具"><a href="#视频剪辑工具" class="headerlink" title="视频剪辑工具"></a>视频剪辑工具</h1><h2 id="VN"><a href="#VN" class="headerlink" title="VN"></a>VN</h2><p>免登录可用<br>应用商店下载就行</p>
 <h1 id="视频播放器"><a href="#视频播放器" class="headerlink" title="视频播放器"></a>视频播放器</h1><h2 id="XPlayer-已破解"><a href="#XPlayer-已破解" class="headerlink" title="XPlayer(已破解)"></a>XPlayer(已破解)</h2><p>视频,音乐都能播放，功能强大<br><a href="https://www.123pan.com/s/wkn6Vv-hVpiH.html">123云盘下载_版本2.2.1.2</a>提取码：XWsx<br><a href="https://wwp.lanzoup.com/iW26T1dug49e">蓝奏云下载_版本2.2.1.2</a>提取码：apj4</p>
 ]]></content>
@@ -1014,7 +1014,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>web</title>
-    <url>/2023/10/19/web/</url>
+    <url>/posts/41754/</url>
     <content><![CDATA[<h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><p>只能搭建静态网站</p>
 <h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>1.default</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/sites-enabled/default</span><br></pre></td></tr></table></figure>
@@ -1034,7 +1034,7 @@ height: 100%; left: 0; top: 0;"> </iframe></div>
   </entry>
   <entry>
     <title>win10-ftpserver</title>
-    <url>/2024/01/26/win10-ftpserver/</url>
+    <url>/posts/7417/</url>
     <content><![CDATA[<p><a href="https://cloud.tencent.com/developer/article/1935592">win10系统下搭建FTP服务器(完成文件上传与下载)-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
 ]]></content>
   </entry>
